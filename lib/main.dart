@@ -10,9 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.lightBlue,
-      ),
+      theme: ThemeData(),
       home: Scaffold(
         appBar: AppBar(
           title: const Heading(text: "Hello World"), //text in title use HEADING()
@@ -34,23 +32,16 @@ class MyApp extends StatelessWidget {
           ),
           backgroundColor: Colors.blueAccent,
         ),
-        body: Container(
-          decoration: const BoxDecoration(
-            color: Colors.blueAccent,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black,
-                offset: Offset(5.0, 5.0),
-                blurRadius: 10
-              )
-            ]
-          ),
-          child: const Text("Hello World!"),
+        body: const Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            BiggerText(text: "fufu"),
+          ]
         ),
-        floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.add),
-          onPressed: () {}
-        ),
+        // floatingActionButton: FloatingActionButton(
+        //   child: const Icon(Icons.add),
+        //   onPressed: () {}
+        // ),
       ),
     );
   }
@@ -92,12 +83,23 @@ class _BiggerTextState extends State<BiggerText> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(widget.text, style: TextStyle(fontSize: _textSize)),
+        Text(
+          widget.text, 
+          style: TextStyle(fontSize: _textSize)
+        ),
         ElevatedButton(
           child: const Text("Perbesar"),
           onPressed: () {
             setState(() {
-              _textSize = 32.0;
+              _textSize += 8.0;
+            });
+          }
+        ),
+        ElevatedButton(
+          child: const Text("Reset"),
+          onPressed: () {
+            setState(() {
+              _textSize = 16.0;
             });
           }
         )
