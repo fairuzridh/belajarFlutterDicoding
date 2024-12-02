@@ -32,12 +32,16 @@ class MyApp extends StatelessWidget {
           ),
           backgroundColor: Colors.blueAccent,
         ),
-        body: const Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        body: const Column (
           children: [
-            BiggerText(text: "fufu"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                BiggerText(text: "fufu"),
+              ]
+            ),
           ]
-        ),
+        )
         // floatingActionButton: FloatingActionButton(
         //   child: const Icon(Icons.add),
         //   onPressed: () {}
@@ -102,8 +106,40 @@ class _BiggerTextState extends State<BiggerText> {
               _textSize = 16.0;
             });
           }
+        ),
+        TextButton( 
+          child: const Text("Was here"),
+          onPressed: () {}
         )
       ],
     );
   }
+}
+
+showAlertDialog(BuildContext context){
+  Widget cancelButton = TextButton(
+    onPressed: () {}, 
+    child: const Text("Cancel")
+  );
+
+  Widget approveButton = TextButton(
+    onPressed: () {},
+    child: const Text("Oke")
+  );
+
+  AlertDialog alert = AlertDialog(
+    title: const Text("Test"),
+    content: const Text("dsdsdsds"),
+    actions: [
+      cancelButton,
+      approveButton,
+    ],
+  );
+
+  showDialog(
+    context: context, 
+    builder: (BuildContext context) {
+      return alert;
+    }
+  );
 }
