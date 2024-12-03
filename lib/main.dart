@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
                 color: Colors.white,
               ),
               onPressed: () {},
-              )
+            )
           ],
           leading: IconButton(
             icon: const Icon(
@@ -32,15 +32,24 @@ class MyApp extends StatelessWidget {
           ),
           backgroundColor: Colors.blueAccent,
         ),
-        body: const Column (
-          children: [
-            Row(
+        body:  Center (
+          child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                BiggerText(text: "fufu"),
+                const BiggerText(text: "fufu"),
+                ElevatedButton(
+                  child: const Text(
+                    'Next',
+                    style: TextStyle(
+                      color: Colors.black
+                    ),
+                  ),
+                  onPressed: (){
+                    Navigator.pop(context);
+                  }, 
+                )
               ]
             ),
-          ]
         )
         // floatingActionButton: FloatingActionButton(
         //   child: const Icon(Icons.add),
@@ -108,8 +117,12 @@ class _BiggerTextState extends State<BiggerText> {
           }
         ),
         TextButton( 
-          child: const Text("Was here"),
-          onPressed: () {}
+          child: const Text("Alert Pop up"),
+          onPressed: () {
+            setState(() {
+              showAlertDialog(context);
+            });
+          }
         )
       ],
     );
@@ -118,18 +131,22 @@ class _BiggerTextState extends State<BiggerText> {
 
 showAlertDialog(BuildContext context){
   Widget cancelButton = TextButton(
-    onPressed: () {}, 
+    onPressed: () {
+      Navigator.pop(context);
+    }, 
     child: const Text("Cancel")
   );
 
   Widget approveButton = TextButton(
-    onPressed: () {},
+    onPressed: () {
+      Navigator.pop(context);
+    },
     child: const Text("Oke")
   );
 
   AlertDialog alert = AlertDialog(
-    title: const Text("Test"),
-    content: const Text("dsdsdsds"),
+    title: const Text("Announcement"),
+    content: const Text("Button 'Perbesar' for make text bigger and button 'Reset' for make text back to first size"),
     actions: [
       cancelButton,
       approveButton,
