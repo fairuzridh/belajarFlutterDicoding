@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_flutter1/pages/latih.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,22 +33,11 @@ class MyApp extends StatelessWidget {
           ),
           backgroundColor: Colors.blueAccent,
         ),
-        body:  Center (
+        body: const Center (
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const BiggerText(text: "fufu"),
-                ElevatedButton(
-                  child: const Text(
-                    'Next',
-                    style: TextStyle(
-                      color: Colors.black
-                    ),
-                  ),
-                  onPressed: (){
-                    Navigator.pop(context);
-                  }, 
-                )
+                BiggerText(text: "fufu"),
               ]
             ),
         )
@@ -123,6 +113,21 @@ class _BiggerTextState extends State<BiggerText> {
               showAlertDialog(context);
             });
           }
+        ),
+        const SizedBox(height: 60.0,),
+        ElevatedButton(
+          child: const Text(
+            'Next',
+            style: TextStyle(
+              color: Colors.black
+            ),
+          ),
+          onPressed: (){
+            // Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Latih()));
+            Navigator.push(context, MaterialPageRoute(builder: (context){
+              return const Latih();
+            }));
+          }, 
         )
       ],
     );
