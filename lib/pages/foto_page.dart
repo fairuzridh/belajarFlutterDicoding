@@ -18,9 +18,20 @@ class FotoPage extends StatelessWidget {
         backgroundColor: Colors.blueAccent,
       ),
       body: Center(
-        child: 
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('images/nyimaks.png', width: 200,),
+            const Text(
+              'Minyak Curah dijual tidak murah', 
+              style: TextStyle(
+                fontFamily: 'BebasNeue'
+              ),
+            )
+          ],
+        ) 
         //Image.network('https://images.pexels.com/photos/28290901/pexels-photo-28290901/free-photo-of-buho-de-anteojos.jpeg', width: 200,),
-        Image.asset('images/nyimaks.png', width: 200,)
+        
       )
     );
   }

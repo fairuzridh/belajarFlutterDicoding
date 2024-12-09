@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'package:test_flutter1/pages/latih.dart';
-import 'package:test_flutter1/pages/fotoPage.dart';
+import 'package:test_flutter1/pages/foto_page.dart';
 
 void main() {
   runApp(const MyApp());
