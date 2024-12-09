@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:test_flutter1/pages/latih.dart';
+// import 'package:test_flutter1/pages/latih.dart';
+import 'package:test_flutter1/pages/fotoPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,10 +42,6 @@ class MyApp extends StatelessWidget {
               ]
             ),
         )
-        // floatingActionButton: FloatingActionButton(
-        //   child: const Icon(Icons.add),
-        //   onPressed: () {}
-        // ),
       ),
     );
   }
@@ -114,7 +111,7 @@ class _BiggerTextState extends State<BiggerText> {
             });
           }
         ),
-        const SizedBox(height: 60.0,),
+        const SizedBox(height: 20.0,),
         ElevatedButton(
           child: const Text(
             'Next',
@@ -125,7 +122,7 @@ class _BiggerTextState extends State<BiggerText> {
           onPressed: (){
             // Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Latih()));
             Navigator.push(context, MaterialPageRoute(builder: (context){
-              return const Latih();
+              return const FotoPage();
             }));
           }, 
         )
