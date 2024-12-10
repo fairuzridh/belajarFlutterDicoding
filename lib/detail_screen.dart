@@ -12,7 +12,8 @@ class DesainScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Image.asset('images/farm-house.jpg'),
+            // Image.asset('images/taman-film.jpg'),
+            Image.network('https://live.staticflickr.com/65535/51595156147_226832c222_k.jpg'),
 
             //title page
             Container(
@@ -35,14 +36,14 @@ class DesainScreen extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      const Icon(Icons.attach_money),
+                      const Icon(Icons.calendar_today),
                       const SizedBox(height: 8.0,), //Jarak icon & text
                       Text("Open Everyday", style: descTextStyle,)
                     ],
                   ),
                   Column(
                     children: [
-                      const Icon(Icons.attach_money),
+                      const Icon(Icons.watch_rounded),
                       const SizedBox(height: 8.0,),
                       Text("09.00 AM", style: descTextStyle,)
                     ],
@@ -81,21 +82,21 @@ class DesainScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(4.0),
                     child: ClipRRect(
                       borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                      child: Image.network('https://media-cdn.tripadvisor.com/media/photo-s/0d/7c/59/70/farmhouse-lembang.jpg'),
+                      child: Image.asset('images/podomoro-park.jpeg'),
                     )
                   ),
                   Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: ClipRRect(
                       borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                      child: Image.network('https://media-cdn.tripadvisor.com/media/photo-s/0d/7c/59/70/farmhouse-lembang.jpg'),
+                      child: Image.network('https://kfmap.asia/storage/thumbs/storage/photos/ID.BDG.RT.TB/ID.BDG.RT.TB_1.jpeg'),
                     )
                   ),
                   Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: ClipRRect(
                       borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                      child: Image.network('https://media-cdn.tripadvisor.com/media/photo-s/0d/7c/59/70/farmhouse-lembang.jpg'),
+                      child: Image.network('https://assets.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/2023/07/30/Bandung-turun-salju-2543469479.jpeg'),
                     )
                   ),
                 ],
