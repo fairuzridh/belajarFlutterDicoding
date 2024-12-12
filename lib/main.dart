@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 // import 'package:test_flutter1/pages/latih.dart';
 // import 'package:test_flutter1/pages/foto_page.dart';
-import 'package:test_flutter1/pages/scroll_page.dart';
+// import 'package:test_flutter1/pages/scroll_page.dart';
+import 'package:test_flutter1/pages/flexpand.dart';
 
 void main() {
   runApp(const MyApp());
@@ -123,7 +124,7 @@ class _BiggerTextState extends State<BiggerText> {
           onPressed: (){
             // Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Latih()));
             Navigator.push(context, MaterialPageRoute(builder: (context){
-              return const ScrollPage();
+              return const Flexpand();
             }));
           }, 
         )
