@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:test_flutter1/main_screen.dart';
+import 'package:test_flutter1/model/tourism_place.dart';
 
 var descTextStyle = const TextStyle(fontFamily: 'Oxygen');
 
-class DesainScreen extends StatelessWidget {
-  const DesainScreen({super.key});
+class DetailScreen extends StatelessWidget {
+  const DetailScreen({super.key, required this.place});
+  final TourismPlace place;
 
   @override
   Widget build(BuildContext context) {
@@ -12,20 +15,43 @@ class DesainScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Image.asset('images/taman-film.jpg'),
-            Image.network('https://live.staticflickr.com/65535/51595156147_226832c222_k.jpg'),
+            Stack(
+              children: [
+                Image.network(place.imageCover),
+                SafeArea(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: Colors.white54,
+                          child: IconButton( 
+                            icon: const Icon(Icons.arrow_back), 
+                            onPressed: () {
+                              Navigator.pop(context);
+                            }
+                          ),
+                        ),
+                        const FavoriteButton()
+                      ],
+                    ),
+                  )
+                )
+              ]
+            ),
 
             //title page
             Container(
               margin: const EdgeInsets.only(top: 16.0),
-              child: const Text(
-                "Bojso Beach & Snow park",
+              child: Text(
+                place.name,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const  TextStyle(
                   fontSize: 32.0,
                   fontFamily: 'Bebas Neue'
                 ),
-                ),
+              ),
             ),
 
             //Icon row 
@@ -38,23 +64,29 @@ class DesainScreen extends StatelessWidget {
                     children: [
                       const Icon(Icons.calendar_today),
                       const SizedBox(height: 8.0,), //Jarak icon & text
-                      Text("Open Everyday", style: descTextStyle,)
+                      Text(
+                      place.openDay, 
+                      style: descTextStyle,
+                    )
                     ],
                   ),
                   Column(
                     children: [
-                      const Icon(Icons.watch_rounded),
+                      const Icon(Icons.monetization_on),
                       const SizedBox(height: 8.0,),
-                      Text("09.00 AM", style: descTextStyle,)
+                      Text(
+                        place.ticketPrice, 
+                        style: descTextStyle,
+                      )
                     ],
                   ),
-                  Column(
-                    children: [
-                      const Icon(Icons.attach_money),
-                      const SizedBox(height: 8.0,),
-                      Text("Cheapest", style: descTextStyle,)
-                    ],
-                  )
+                  // Column(
+                  //   children: [
+                  //     const Icon(Icons.attach_money),
+                  //     const SizedBox(height: 8.0,),
+                  //     Text("Cheapest", style: descTextStyle,)
+                  //   ],
+                  // ),
                 ],
               ),
             ),
@@ -62,12 +94,12 @@ class DesainScreen extends StatelessWidget {
             //Description paragraph
             Container(
               padding: const EdgeInsets.all(16.0),
-              child: const Text(
-                "Bojongsoang is now a densely populated sub-district With the plan to build a new city of Tegalluar and a high-speed train in Indonesia in the village of Tegalluar located at the eastern end of Bojongsoang district, it is certain that the development of Bojongsoang in the future will be more rapid even though the negative impact is the reduction of vacant land and rice fields as well as the rate of urbanization that may be uncontrollable.",
+              child: Text(
+                place.desc,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
+                  fontSize: 12.0,
                   fontFamily: 'Oxygen',
-                  fontSize: 12.0
                 ),
               ),
             ),
@@ -77,29 +109,15 @@ class DesainScreen extends StatelessWidget {
               height: 150,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: [
-                  Padding(
+                children: place.imageSpot.map((url) {
+                  return Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: ClipRRect(
                       borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                      child: Image.asset('images/podomoro-park.jpeg'),
+                      child: Image.network(url),
                     )
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                      child: Image.network('https://kfmap.asia/storage/thumbs/storage/photos/ID.BDG.RT.TB/ID.BDG.RT.TB_1.jpeg'),
-                    )
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                      child: Image.network('https://assets.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/2023/07/30/Bandung-turun-salju-2543469479.jpeg'),
-                    )
-                  ),
-                ],
+                  );
+                }).toList(),
               ),
             )
           ],
